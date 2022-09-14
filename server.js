@@ -2,7 +2,6 @@ const express = require("express");
 const app = express();
 const routes = require("./routes/productos");
 
-
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
@@ -12,7 +11,9 @@ app.get("/:file", (req, res) => {
 });
 
 // Ruta /productos
-app.use("/api", routes)
+app.use("/api", routes);
 
 // Servidor levantado
-app.listen(8080, () => console.log("Server levantado en el puerto 8080."));
+app
+  .listen(8080, () => console.log("Server levantado en el puerto 8080."))
+  .on("error", (e) => console.log("Descripción error: ", e.message));
